@@ -5,8 +5,12 @@ const startButton = document.querySelector("#start");
 const score = document.querySelector("#score"); // Use querySelector() to get the score element
 const highestScoreElement = document.querySelector("#highest-score");
 const timerDisplay = document.querySelector("#timer"); // use querySelector() to get the timer element.
-const gameAudio = new Audio("/assets/upbeatMusic.mp3?raw=true");
-const hitAudio = new Audio("/assets/hit.mp3");
+const gameAudio = new Audio(
+  "https://github.com/stacychen/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/upbeatMusic.mp3?raw=true"
+);
+const hitAudio = new Audio(
+  "https://github.com/stacychen/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/hit.mp3?raw=true"
+);
 const startAudioButton = document.querySelector("#audio-on");
 const endAudioButton = document.querySelector("#audio-off");
 

@@ -1,5 +1,6 @@
 html {
-  background: url("/assets/field.png") no-repeat center center fixed;
+  background: url("https://github.com/stacychen/js-dev-final-capstone-starter-whack-a-mole/blob/main/assets/field.png")
+    no-repeat center center fixed;
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
