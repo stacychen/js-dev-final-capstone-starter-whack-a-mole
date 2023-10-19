@@ -11,7 +11,6 @@ const onPageConsole = (msg) => {
 };
 
 describe("US-01: Basic Game Structure", () => {
-
   beforeEach(async () => {
     page.on("console", onPageConsole);
     page.on("pageerror", (err) => console.log(err));
@@ -22,7 +21,7 @@ describe("US-01: Basic Game Structure", () => {
     const title = await page.evaluate(() => {
       const title = document.querySelectorAll("#title");
       return title.length;
-     });
+    });
     expect(title).not.toBeNull();
     expect(title).toEqual(1);
   });
@@ -31,7 +30,7 @@ describe("US-01: Basic Game Structure", () => {
     const holes = await page.evaluate(() => {
       const h = document.querySelectorAll(".hole");
       return h.length;
-     });
+    });
     expect(holes).not.toBeNull();
     expect(holes).toEqual(9);
   });
@@ -40,7 +39,7 @@ describe("US-01: Basic Game Structure", () => {
     const moles = await page.evaluate(() => {
       const m = document.querySelectorAll(".mole");
       return m.length;
-     });
+    });
     expect(moles).not.toBeNull();
     expect(moles).toEqual(9);
   });
@@ -49,7 +48,7 @@ describe("US-01: Basic Game Structure", () => {
     const start = await page.evaluate(() => {
       const startButton = document.querySelectorAll("#start");
       return startButton.length;
-     });
+    });
     expect(start).not.toBeNull();
     expect(start).toEqual(1);
   });
@@ -58,7 +57,7 @@ describe("US-01: Basic Game Structure", () => {
     const score = await page.evaluate(() => {
       const score = document.querySelectorAll("#score");
       return score.length;
-     });
+    });
     expect(score).not.toBeNull();
     expect(score).toEqual(1);
   });
@@ -67,7 +66,7 @@ describe("US-01: Basic Game Structure", () => {
     const timer = await page.evaluate(() => {
       const timer = document.querySelectorAll("#timer");
       return timer.length;
-     });
+    });
     expect(timer).not.toBeNull();
     expect(timer).toEqual(1);
   });
@@ -76,7 +75,7 @@ describe("US-01: Basic Game Structure", () => {
 describe("US-02: randomInteger()", () => {
   it("should return a number between 0 - 10 if randomInteger(0, 10)", async () => {
     const randomInteger = await page.evaluate(() => {
-      return window.randomInteger(0,10);
+      return window.randomInteger(0, 10);
     });
     expect(randomInteger).toBeGreaterThanOrEqual(0);
     expect(randomInteger).toBeLessThanOrEqual(10);
@@ -84,12 +83,11 @@ describe("US-02: randomInteger()", () => {
 
   it("should return a number between 600 - 1200 if randomInteger(600, 1200)", async () => {
     const randomInteger = await page.evaluate(() => {
-      return window.randomInteger(600,1200);
+      return window.randomInteger(600, 1200);
     });
     expect(randomInteger).toBeGreaterThanOrEqual(600);
     expect(randomInteger).toBeLessThanOrEqual(1200);
   });
-
 });
 
 describe("US-02: setDelay()", () => {
@@ -123,12 +121,11 @@ describe("US-02: chooseHole()", () => {
       const hole = window.chooseHole(holes);
       return hole.classList;
     });
-    expect(hole['0']).toEqual("hole");
+    expect(hole["0"]).toEqual("hole");
   });
 });
 
 describe("US-03: toggleVisibility()", () => {
-
   it("should use hole.classList.toggle to toggle the show class", async () => {
     const toggle = await page.evaluate(() => {
       return window.toggleVisibility.toString();
@@ -140,13 +137,12 @@ describe("US-03: toggleVisibility()", () => {
     const toggle = await page.evaluate(() => {
       return window.toggleVisibility(window.holes[0]).classList;
     });
-    expect(toggle['0']).toContain("hole");
-    expect(toggle['1']).toContain("show");
+    expect(toggle["0"]).toContain("hole");
+    expect(toggle["1"]).toContain("show");
   });
 });
 
 describe("US-03: showUp()", () => {
-
   it("should use the toggleVisibility(hole) function inside showAndHide()", async () => {
     const showAndHide = await page.evaluate(() => {
       return window.showAndHide.toString();
@@ -156,9 +152,9 @@ describe("US-03: showUp()", () => {
 
   it("should return an id corresponding to the setTimeout function", async () => {
     const showAndHide = await page.evaluate(() => {
-      return window.showAndHide(window.holes[0],10);
+      return window.showAndHide(window.holes[0], 10);
     });
-    expect(typeof showAndHide).toBe('number');
+    expect(typeof showAndHide).toBe("number");
   });
 
   it("should use the setDelay(difficulty) function inside showUp()", async () => {
@@ -179,12 +175,11 @@ describe("US-03: showUp()", () => {
     const showUp = await page.evaluate(() => {
       return window.showUp();
     });
-    expect(typeof showUp).toBe('number');
+    expect(typeof showUp).toBe("number");
   });
 });
 
 describe("US-03: startGame() and gameOver()", () => {
-
   it("should call showUp() from the startGame() function", async () => {
     const startGame = await page.evaluate(() => {
       return window.startGame.toString();
@@ -199,10 +194,10 @@ describe("US-03: startGame() and gameOver()", () => {
     expect(startGame).toContain("game started");
   });
 
-  it('should call showUp() when clicking the start button', async () => {
+  it("should call showUp() when clicking the start button", async () => {
     await page.click("button[id=start]");
     const content = await page.content();
-    expect(content).toContain('hole show');
+    expect(content).toContain("hole show");
   });
 
   it("returns 'game stopped' if time = 0 // gameOver() function", async () => {
@@ -220,12 +215,11 @@ describe("US-03: startGame() and gameOver()", () => {
     });
     // should return the setTimeout id because it calls showUp()
     // and showUp() returns the setTimeout id.
-    expect(typeof gameOver).toBe('number');
+    expect(typeof gameOver).toBe("number");
   });
 });
 
 describe("US-04: updateScore() and clearScore()", () => {
-
   it("should increment score when calling updateScore()", async () => {
     let content = await page.content();
     expect(content).toContain('<span id="score">0</span>');

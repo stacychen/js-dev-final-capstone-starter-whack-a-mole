@@ -1,20 +1,47 @@
 <html>
   <head>
-    <link rel="stylesheet" href="./src/styles.css">
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="icon" type="image/png" href="assets/mole.png" />
   </head>
   <body>
-    <h1></h1>
+    <h1 id="title">Welcome to the whacky Whack-a-mole game!</h1>
     <div>
       <div>
-        <h2>Click start to play!</h2>
+        <h2>Choose a difficulty level and click Start to play!</h2>
       </div>
-      <div>
-        <h2>score: <span id="score">0</span></h2>
+      <div class="dropdown">
+        <!-- <label for="level">Choose a level:</label> -->
+        <select name="levelSelected" id="level" required>
+          <option value="" selected>Please select a level</option>
+          <option value="easy" class="options">Easy</option>
+          <option value="normal" class="options">Normal</option>
+          <option value="hard" class="options">Hard</option>
+        </select>
+        <div>
+          <button id="start">Start</button>
+        </div>
       </div>
-      <div>
-          <h2><span id="timer">0</span> seconds left.</h2>
+      <div class="middle-section">
+        <div class="middle-section-image">
+          <img src="/assets/mole2.png" />
+        </div>
+        <div class="score">
+          <div>
+            <h2>Score: <span id="score">0</span></h2>
+          </div>
+          <div>
+            <h2>Your highest score: <span id="highest-score">0</span></h2>
+          </div>
+          <div>
+            <h2>You have <span id="timer">0</span> seconds left</h2>
+          </div>
+        </div>
+        <div class="middle-section-image">
+          <img src="/assets/mole2.png" />
+        </div>
       </div>
-    </div>
+  
+
     <div class="grid">
       <div id="hole0" class="hole">
         <div id="mole0" class="mole"></div>
@@ -22,7 +49,36 @@
       <div id="hole1" class="hole">
         <div id="mole1" class="mole"></div>
       </div>
-      <!--TODO: Add the missing holes and moles. -->
+      <div id="hole2" class="hole">
+        <div id="mole2" class="mole"></div>
+      </div>
+      <div id="hole3" class="hole">
+        <div id="mole3" class="mole"></div>
+      </div>
+      <div id="hole4" class="hole">
+        <div id="mole4" class="mole"></div>
+      </div>
+      <div id="hole5" class="hole">
+        <div id="mole5" class="mole"></div>
+      </div>
+      <div id="hole6" class="hole">
+        <div id="mole6" class="mole"></div>
+      </div>
+      <div id="hole7" class="hole">
+        <div id="mole7" class="mole"></div>
+      </div>
+      <div id="hole8" class="hole">
+        <div id="mole8" class="mole"></div>
+      </div>
+    </div>
+    <div class="audio">
+      <!-- <label>Choose audio option:</label>
+      <input type="radio" name="audio" value="none" /> No audio
+      <input type="radio" name="audio" value="upbea-music" id="upbeat-music" />
+      Upbeat music -->
+
+      <button id="audio-on">Audio on</button>
+      <button id="audio-off">Stop audio</button>
     </div>
     <script src="./src/index.js"></script>
   </body>
