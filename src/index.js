@@ -1,6 +1,7 @@
 const holes = document.querySelectorAll(".hole");
 const moles = document.querySelectorAll(".mole");
 const startButton = document.querySelector("#start");
+const levelSelector = document.querySelector("#level");
 // TODO: Add the missing query selectors:
 const score = document.querySelector("#score"); // Use querySelector() to get the score element
 const highestScoreElement = document.querySelector("#highest-score");
@@ -19,7 +20,9 @@ let timer;
 let lastHole = 0;
 let points = 0;
 let highestScore = 0;
-let difficulty = "";
+let difficulty = (levelSelector.onchange = () => {
+  difficulty = levelSelector.value;
+});
 
 /**
  * Generates a random integer within a range.
@@ -53,10 +56,6 @@ function randomInteger(min, max) {
 
 function setDelay(difficulty) {
   // TODO: Write your code here.
-
-  const dropdownList = document.getElementById("level");
-
-  difficulty = dropdownList.value;
 
   if (difficulty === "easy") {
     return 1500;
